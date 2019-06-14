@@ -1,0 +1,72 @@
+---
+title: "06-assignment_jimenez"
+author: "Nicole Jimenez"
+date: "6/9/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Assignment 6
+Complete the following steps using the .Rdata or file. I want you to use the ggplot library and commands for all plots. Use the els data to complete the following steps.
+
+## Setup
+The code for today starts with the normal set of preliminaries, opening up the `els.RData` dataset and creating a codebook. 
+
+```{r,echo=FALSE}
+
+library(tidyverse)
+library(forcats)
+library(modelr)
+
+load("~/Google Drive/EdD/term_5/data science/scripts_data_files/els.Rdata")
+
+```
+
+#1 Choose a dependent variable and plot that dependent variable as a function of a continuous independent variable.
+```{r}
+#Plot english test scores vs. ses
+g1<-ggplot(data=els,
+           aes(x=byses1,y=bynels2r)
+           )
+
+g1<-g1+geom_point(alpha=.5,size=.25) # Add points at x and y
+g1
+```
+
+
+#2 If you need to, adjust the scale of either the dependent variable or independent variable to make more sense.
+
+```{r}
+#Plot english test scores vs. ses
+g1<-ggplot(data=els,
+           aes(x=byses1,y=bynels2r)
+           )
+
+g1<-g1+geom_point(alpha=.5,size=.25) # Add points at x and y
+g1
+```
+
+#3 Add a line of best fit to your graphic.
+
+```{r}
+g1<-g1+geom_smooth(method="lm")
+g1<-g1+geom_smooth(method="loess", color="pink")
+g1
+```
+
+
+#4 Clean up the labeling and description of the graphic so that it could be presented to a broader audience.
+
+```{r}
+g1<-g1+ylab("English Test Scores")+xlab("By Socio Economic Status")
+g1
+```
+
+
+#5 In your .Rmd file, include a few sentences describing what the graphic above shows.
+The graph is meant to represent the test scores by the students' socio economic status. It shows the spread of each student's test score with all the dots and also the average score with of each SES status with the lines.
+
